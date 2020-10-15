@@ -1,0 +1,290 @@
+{
+  "devices": {
+    "device:leaf1": {
+      "basic": {
+        "managementAddress": "grpc://localhost:50001?device_id=1",
+        "driver": "stratum-bmv2",
+        "pipeconf": "org.onosproject.pipelines.fabric"
+      },
+      "segmentrouting": {
+        "name": "leaf1",
+        "ipv4NodeSid": 100,
+        "ipv4Loopback": "192.168.0.100",
+        "ipv6NodeSid": 101,
+        "ipv6Loopback": "2000::c0a8:0100",
+        "routerMac": "00:00:00:00:01:00",
+        "isEdgeRouter": true,
+        "adjacencySids": []
+      }
+    },
+    "device:leaf2": {
+      "basic": {
+        "managementAddress": "grpc://localhost:50002?device_id=1",
+        "driver": "stratum-bmv2",
+        "pipeconf": "org.onosproject.pipelines.fabric"
+      },
+      "segmentrouting": {
+        "name": "leaf2",
+        "ipv4NodeSid": 200,
+        "ipv4Loopback": "192.168.0.200",
+        "ipv6NodeSid": 201,
+        "ipv6Loopback": "2000::c0a8:0200",
+        "routerMac": "00:00:00:00:02:00",
+        "isEdgeRouter": true,
+        "adjacencySids": []
+      }
+    },
+    "device:leaf3": {
+      "basic": {
+        "managementAddress": "grpc://127.0.0.1:50003?device_id=1",
+        "driver": "stratum-bmv2",
+        "pipeconf": "org.onosproject.pipelines.fabric"
+      },
+      "segmentrouting": {
+        "name": "leaf2",
+        "ipv4NodeSid": 300,
+        "ipv4Loopback": "192.168.0.3",
+        "ipv6NodeSid": 301,
+        "ipv6Loopback": "2000::c0a8:0003",
+        "routerMac": "00:00:00:00:03:00",
+        "pairDeviceId": "device:leaf4",
+        "pairLocalPort": 30,
+        "isEdgeRouter": true,
+        "adjacencySids": []
+      }
+    },
+    "device:leaf4": {
+      "basic": {
+        "managementAddress": "grpc://127.0.0.1:50004?device_id=1",
+        "driver": "stratum-bmv2",
+        "pipeconf": "org.onosproject.pipelines.fabric"
+      },
+      "segmentrouting": {
+        "name": "leaf2",
+        "ipv4NodeSid": 400,
+        "ipv4Loopback": "192.168.0.4",
+        "ipv6NodeSid": 401,
+        "ipv6Loopback": "2000::c0a8:0004",
+        "routerMac": "00:00:00:00:03:00",
+        "pairDeviceId": "device:leaf3",
+        "pairLocalPort": 30,
+        "isEdgeRouter": true,
+        "adjacencySids": []
+      }
+    },
+    "device:spine1": {
+      "basic": {
+        "managementAddress": "grpc://localhost:50005?device_id=1",
+        "driver": "stratum-bmv2",
+        "pipeconf": "org.onosproject.pipelines.fabric"
+      },
+      "segmentrouting": {
+        "name": "spine1",
+        "ipv4NodeSid": 110,
+        "ipv4Loopback": "192.168.0.110",
+        "ipv6NodeSid": 110,
+        "ipv6Loopback": "2000::c0a8:0110",
+        "routerMac": "00:00:00:00:01:10",
+        "isEdgeRouter": false,
+        "adjacencySids": []
+      }
+    },
+    "device:spine2": {
+      "basic": {
+        "managementAddress": "grpc://localhost:50006?device_id=1",
+        "driver": "stratum-bmv2",
+        "pipeconf": "org.onosproject.pipelines.fabric"
+      },
+      "segmentrouting": {
+        "name": "spine2",
+        "ipv4NodeSid": 210,
+        "ipv4Loopback": "192.168.0.210",
+        "ipv6NodeSid": 211,
+        "ipv6Loopback": "2000::c0a8:0210",
+        "routerMac": "00:00:00:00:02:10",
+        "isEdgeRouter": false,
+        "adjacencySids": []
+      }
+    }
+  },
+  "ports": {
+    "device:leaf1/3": {
+      "interfaces": [
+        {
+          "name": "h1",
+          "ips": [
+            "10.0.2.254/24"
+          ],
+          "vlan-untagged": 10
+        }
+      ]
+    },
+    "device:leaf1/4": {
+      "interfaces": [
+        {
+          "name": "h2",
+          "ips": [
+            "10.0.2.254/24"
+          ],
+          "vlan-tagged": [
+            10
+          ]
+        }
+      ]
+    },
+    "device:leaf2/3": {
+      "interfaces": [
+        {
+          "name": "h3",
+          "ips": [
+            "10.0.3.254/24"
+          ],
+          "vlan-untagged": 20
+        }
+      ]
+    },
+    "device:leaf2/4": {
+      "interfaces": [
+        {
+          "name": "h4",
+          "ips": [
+            "10.0.3.254/24"
+          ],
+          "vlan-tagged": [
+            20
+          ]
+        }
+      ]
+    },
+    "device:leaf3/4": {
+      "interfaces": [
+        {
+          "name": "h5",
+          "ips": [
+            "10.90.2.1/22"
+          ],
+          "vlan-tagged": [
+            3421
+          ]
+        }
+      ]
+    },
+    "device:leaf4/4": {
+      "interfaces": [
+        {
+          "name": "h5",
+          "ips": [
+            "10.90.2.1/22"
+          ],
+          "vlan-tagged": [
+            3421
+          ]
+        }
+      ]
+    },
+    "device:leaf3/5": {
+      "interfaces": [
+        {
+          "name": "h6",
+          "ips": [
+            "10.90.2.2/22"
+          ],
+          "vlan-tagged": [
+            3421
+          ]
+        }
+      ]
+    },
+    "device:leaf4/5": {
+      "interfaces": [
+        {
+          "name": "h6",
+          "ips": [
+            "10.90.2.2/22"
+          ],
+          "vlan-tagged": [
+            3421
+          ]
+        }
+      ]
+    },
+    "device:leaf3/6": {
+      "interfaces": [
+        {
+          "name": "h7",
+          "ips": [
+            "10.90.2.3/22"
+          ],
+          "vlan-tagged": [
+            3421
+          ]
+        }
+      ]
+    },
+    "device:leaf4/6": {
+      "interfaces": [
+        {
+          "name": "h7",
+          "ips": [
+            "10.90.2.3/22"
+          ],
+          "vlan-tagged": [
+            3421
+          ]
+        }
+      ]
+    },
+    "device:leaf3/7": {
+      "interfaces": [
+        {
+          "name": "h8",
+          "ips": [
+            "10.90.2.4/22"
+          ],
+          "vlan-tagged": [
+            3421
+          ]
+        }
+      ]
+    },
+    "device:leaf4/7": {
+      "interfaces": [
+        {
+          "name": "h8",
+          "ips": [
+            "10.90.2.4/22"
+          ],
+          "vlan-tagged": [
+            3421
+          ]
+        }
+      ]
+    },
+    "device:leaf3/8": {
+      "interfaces": [
+        {
+          "name": "h9",
+          "ips": [
+            "10.90.2.5/22"
+          ],
+          "vlan-tagged": [
+            3421
+          ]
+        }
+      ]
+    },
+    "device:leaf4/8": {
+      "interfaces": [
+        {
+          "name": "h9",
+          "ips": [
+            "10.90.2.5/22"
+          ],
+          "vlan-tagged": [
+            3421
+          ]
+        }
+      ]
+    }
+  }
+}
