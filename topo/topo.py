@@ -139,7 +139,7 @@ def main():
         switch=StratumBmv2Switch,
         controller=None)
     net.start()
-    for i in range(5, 9):
+    for i in range(5, 10):
         host = net.get('h'+str(i))
         host.cmd('modprobe bonding mode=4')
         host.cmd('ip link add bond0 type bond')
